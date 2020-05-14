@@ -287,13 +287,12 @@ func setPraiseNumber(w http.ResponseWriter,r *http.Request){
 }
 
 func main() {
+	http.HandleFunc("/api/setPraiseNumber", setPraiseNumber)
+	http.HandleFunc("/api/article", article)
+	http.HandleFunc("/api/articlelist", articleList)
+	http.HandleFunc("/api/addArticle", addArticle)
+	http.HandleFunc("/api/getuser", getUser)
+	http.HandleFunc("/api/login", login)
 
-
-	http.HandleFunc("/setPraiseNumber", setPraiseNumber)
-	http.HandleFunc("/article", article)
-	http.HandleFunc("/articlelist", articleList)
-	http.HandleFunc("/addArticle", addArticle)
-	http.HandleFunc("/getuser", getUser)
-	http.HandleFunc("/login", login)
-	http.ListenAndServe(":9520", nil)
+	http.ListenAndServe(":2929", nil)
 }
