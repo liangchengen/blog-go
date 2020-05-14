@@ -52,7 +52,7 @@ func articleList(w http.ResponseWriter, r *http.Request) {
 		 pageNumber int
 	)
 	//连接数据库
-	db, err := sql.Open("mysql", "root:123456@/web?charset=utf8")
+	db, err := sql.Open("mysql", "root:Liang!123@/web?charset=utf8")
 	defer db.Close()
 	checkErr(err)
 	//查询总共有多少条数据
@@ -91,7 +91,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	)
 
 	//连接数据库
-	db, err := sql.Open("mysql", "root:123456@/web?charset=utf8")
+	db, err := sql.Open("mysql", "root:Liang!123@/web?charset=utf8")
 	defer db.Close()
 
 	checkErr(err)
@@ -145,7 +145,7 @@ func getUser(w http.ResponseWriter, r *http.Request){
 		text map[string]interface{}
 	)
 	//连接数据库
-	db, err := sql.Open("mysql", "root:123456@/web?charset=utf8")
+	db, err := sql.Open("mysql", "root:Liang!123@/web?charset=utf8")
 	defer db.Close()
 
 	checkErr(err)
@@ -184,7 +184,7 @@ func addArticle(w http.ResponseWriter,r *http.Request){
 		text map[string]interface{}
 	)
 	//连接数据库
-	db, err := sql.Open("mysql", "root:123456@/web?charset=utf8")
+	db, err := sql.Open("mysql", "root:Liang!123@/web?charset=utf8")
 	defer db.Close()
 	checkErr(err)
 	//查询cookie
@@ -231,7 +231,7 @@ func article(w http.ResponseWriter,r *http.Request){
 		text map[string]interface{}
 	)
 	//连接数据库
-	db, err := sql.Open("mysql", "root:123456@/web?charset=utf8")
+	db, err := sql.Open("mysql", "root:Liang!123@/web?charset=utf8")
 	defer db.Close()
 	checkErr(err)
 
@@ -266,7 +266,7 @@ func setPraiseNumber(w http.ResponseWriter,r *http.Request){
 		praise int
 	)
 	//连接数据库
-	db, err := sql.Open("mysql", "root:123456@/web?charset=utf8")
+	db, err := sql.Open("mysql", "root:Liang!123@/web?charset=utf8")
 	defer db.Close()
 	checkErr(err)
 
