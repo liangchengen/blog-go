@@ -106,12 +106,10 @@ func login(w http.ResponseWriter, r *http.Request) {
 	//验证cookie
 	r.ParseForm()
 	postData := r.PostFormValue("name") + r.PostFormValue("password") + "fgxnxnxiyiuvhj"
-	fmt.Println("postData:",postData)
+
 	md5 := md52.Sum([]byte(postData))
 	postData= fmt.Sprintf("%x",string(md5[:]))
 
-	fmt.Println("MD5:",postData)
-	fmt.Println("MD5:",cookie)
 
 
 	if postData == cookie {
@@ -152,7 +150,6 @@ func getUser(w http.ResponseWriter, r *http.Request){
 	//查询cookie
 	x ,err :=r.Cookie("cookie")
 	cookie = x.Value
-	fmt.Println(cookie)
 	row1,err := db.Query(`select count(cookie) FROM user WHERE cookie="` + cookie +`"`)
 	checkErr(err)
 	for row1.Next() {
@@ -190,7 +187,6 @@ func addArticle(w http.ResponseWriter,r *http.Request){
 	//查询cookie
 	x ,err :=r.Cookie("cookie")
 	cookie = x.Value
-	fmt.Println(x.Value)
 	row1,err := db.Query(`select count(cookie) FROM user WHERE cookie="` + cookie +`"`)
 	checkErr(err)
 	for row1.Next() {
@@ -252,7 +248,6 @@ func article(w http.ResponseWriter,r *http.Request){
 
 	//返回消息
 	response = `{"title":"` + title +  `","data":"`+ data +`"}`
-	fmt.Println(response)
 	err = json.Unmarshal([]byte(response), &text)
 	checkErr(err)
 
@@ -287,12 +282,12 @@ func setPraiseNumber(w http.ResponseWriter,r *http.Request){
 }
 
 func main() {
-	http.HandleFunc("/api/setPraiseNumber", setPraiseNumber)
-	http.HandleFunc("/api/article", article)
-	http.HandleFunc("/api/articlelist", articleList)
-	http.HandleFunc("/api/addArticle", addArticle)
-	http.HandleFunc("/api/getuser", getUser)
-	http.HandleFunc("/api/login", login)
+	http.HandleFunc("/setPraiseNumber", setPraiseNumber)
+	http.HandleFunc("/article", article)
+	http.HandleFunc("/articlelist", articleList)
+	http.HandleFunc("/addArticle", addArticle)
+	http.HandleFunc("/getuser", getUser)
+	http.HandleFunc("/login", login)
 
 	http.ListenAndServe(":2929", nil)
 }
